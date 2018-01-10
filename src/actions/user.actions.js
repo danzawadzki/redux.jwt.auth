@@ -1,5 +1,6 @@
 import {userConstants} from "../constants/user.constants";
 import {userServices} from "../services/user.services";
+import {alertConstants} from "../constants/alert.constants";
 
 /**
  * Action to login user.
@@ -26,6 +27,7 @@ const login = (username, password) => async dispatch => {
 
         /** Dispatching action on login failure */
         dispatch({type: userConstants.LOGIN_FAILURE, e})
+        dispatch({type: alertConstants.ERROR(e)});
     }
 
 };

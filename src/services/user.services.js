@@ -13,7 +13,7 @@ const login = (username, password) => {
     return fetch(`${apiConstants.url}/api/login`, {
         method: "POST",
         body: JSON.stringify(request),
-        headers: new Headers({"content-type": "application/json"})
+        headers: {"Content-type": "application/json; charset=UTF-8"}
     })
 };
 

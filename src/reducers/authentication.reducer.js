@@ -4,9 +4,15 @@ import {userConstants} from "../constants/user.constants";
 let user = localStorage.getItem(userConstants.LOGIN_JWT);
 
 /** Initial state */
-const initialState = user ? {loggedIn: true, user} : {};
+const initialState = user ? {loggedIn: true, user} : {logging_pending: false};
 
-/** Reducer */
+/**
+ * The authentication reducer.
+ *
+ * @param state - The reducer state.
+ * @param action - The action to be dispatched.
+ * @returns {*}
+ */
 export const authentication = (state = initialState, action) => {
     switch (action.type) {
         case userConstants.LOGIN_REQUEST:
@@ -18,7 +24,7 @@ export const authentication = (state = initialState, action) => {
         case userConstants.LOGIN_SUCCESS:
             return {
                 ...state,
-                logging_pending: true,
+                logging_pending: false,
                 user: action.user
             };
         case userConstants.LOGIN_FAILURE:
