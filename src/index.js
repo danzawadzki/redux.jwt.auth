@@ -5,12 +5,11 @@ import {applyMiddleware, combineReducers, createStore} from "redux";
 import {createLogger} from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 import {authentication} from "./reducers/authentication.reducer";
-import {userActions} from "./actions/user.actions";
-import {createBrowserHistory} from "history";
 import './index.css';
 import {alert} from "./reducers/alert.reducer";
 import registerServiceWorker from "./registerServiceWorker";
 import RootRouter from "./router/root.router";
+import "./styles/styles.css";
 
 const rootReducer = combineReducers({authentication, alert});
 
