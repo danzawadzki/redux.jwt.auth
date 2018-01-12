@@ -3,10 +3,10 @@
  *
  * @param e - The dom event.
  */
-export const handleChange = e => {
-    const {name, value} = e.target;
+export function handleChange(e) {
+    const {id, value} = e.target;
 
     this.setState({
-        [name]: value
+        [id]: value
     })
 };

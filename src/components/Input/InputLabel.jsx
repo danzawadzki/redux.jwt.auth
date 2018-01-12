@@ -5,14 +5,14 @@ import PropTypes from "prop-types";
 /**
  * The input component with label above and option small description under.
  *
- * @param label - The input label.
- * @param id - The input id attribute.
- * @param type - The input type attribute (default is text).
- * @param handleChange - The handler to input onChange event.
- * @param placeholder - The input placeholder attribute.
- * @param idLabelSmall - The id attribute for small additional label under the input.
- * @param textLabelSmall - The text content for small additional label under the input.
- * @param classLabelSmall - The class name attribute for small additional label under the input.
+ * @param {String} label - The input label.
+ * @param {String} id - The input id attribute.
+ * @param {String} type - The input type attribute (default is text).
+ * @param {Function} handleChange - The handler to input onChange event.
+ * @param {String} placeholder - The input placeholder attribute.
+ * @param {String} idLabelSmall - The id attribute for small additional label under the input.
+ * @param {String} textLabelSmall - The text content for small additional label under the input.
+ * @param {String} classLabelSmall - The class name attribute for small additional label under the input.
  * @returns {XML}
  * @constructor
  */

@@ -3,7 +3,7 @@ import {alertConstants} from "../constants/alert.constants";
 /**
  * Action to display success alert.
  *
- * @param message - The alert message.
+ * @param {String} message - The alert message.
  * @returns {{type: string, message: *}}
  */
 const success = message => {
@@ -15,7 +15,7 @@ const success = message => {
 /**
  * Action to display error alert.
  *
- * @param message - The alert message.
+ * @param {String} message - The alert message.
  * @returns {{type: string, message: *}}
  */
 const error = message => {
@@ -24,7 +24,7 @@ const error = message => {
     }
 };
 
-/**
+/**{String}
  * Action to clear alert.
  *
  * @returns {{type: string}}

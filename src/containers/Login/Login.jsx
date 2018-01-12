@@ -1,38 +1,68 @@
 import * as React from "react";
 import {connect} from "react-redux";
-import {userConstants} from "../../constants/user.constants";
-import {userActions} from "../../actions/user.actions";
-import InputLabel from "../../components/Input/InputLabel";
+import LayoutForm from "../../components/Layout/LayoutForm";
+import LoginForm from "./LoginForm";
+import {login} from "../../actions/user.actions";
+import {handleChange} from "../../helpers/handler.helpers";
+import LoaderForm from "../Loader/LoaderForm";
 
-// const Login = () => (
-//     <h1>Login</h1>
-// );
-//
-// export default Login;
+/**
+ * The login view container.
+ */
 
 class Login extends React.Component {
-    constructor(props){
-        super(props)
+
+    /** Handler to onSubmit event */
+    handleSubmit = e => {
+        e.preventDefault();
+
+        const {userEmail, userPassword} = this.state;
+        const {login} = this.props;
+        login(userEmail, userPassword);
+    };
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            userEmail: null,
+            userPassword: null
+        };
+
+        this.handleChange = handleChange.bind(this);
     }
 
     render() {
         return (
-            <div>
-                {this.props.logging_pending ? "LOADING..." : ""}
-                <InputLabel
-                    id="login"
-                    label="login"
-                    placeholder="test"
-                    handleChange={(e)=>console.log(e.target.value)}/>
-                <button value="LOGIN" onClick={()=>this.props.dispatch(userActions.login("a","a"))}/>
-            </div>
+            <LayoutForm>
+
+                {/* Loader */}
+                {this.props.logging_pending && <LoaderForm/>}
+
+                {/* Login Form */}
+                <LoginForm
+                    handleChange={this.handleChange}
+                    handleSubmit={this.handleSubmit}/>
+
+            </LayoutForm>
+
         )
     }
 }
 
-const mapStateToProps = (state) => {
+/**
+ * Mapping redux state to props.
+ *
+ * @param {Object||Array} state - The redux state.
+ * @returns {{logging_pending: *}}
+ */
+const mapStateToProps = state => {
     const {logging_pending} = state.authentication;
+    console.log(state);
     return {logging_pending}
 };
 
-export default connect(mapStateToProps)(Login);
+/** PropTypes */
+Login.propTypes = {};
+
+export default connect(mapStateToProps, {login})(Login);

@@ -3,8 +3,8 @@ import {alertConstants} from "../constants/alert.constants";
 /**
  * The alert reducer.
  *
- * @param state - The reducer state.
- * @param action - The action to be dispatched.
+ * @param {Object} state - The reducer state.
+ * @param {Object} action - The action to be dispatched.
  * @returns {*}
  */
 export const alert = (state = {}, action) => {

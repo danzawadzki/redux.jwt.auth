@@ -2,15 +2,14 @@ import * as React from "react";
 import PropTypes from "prop-types";
 
 /**
- * The input component with label above and option small description under.
+ * The input component.
  *
- * @param id - The input id attribute.
- * @param type - The input type attribute (default is text).
- * @param handleChange - The handler to input onChange ev
- * @param placeholder - The input placeholder attribute.
+ * @param {String} id - The input id attribute.
+ * @param {String} type - The input type attribute (default is text).
+ * @param {Function} handleChange - The handler to input onChange ev
+ * @param {String} placeholder - The input placeholder attribute.
  * @constructor
  */
-
 const Input = ({id, type = "text", handleChange, placeholder}) => (
     <input
         type={type}

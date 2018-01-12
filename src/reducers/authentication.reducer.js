@@ -9,8 +9,8 @@ const initialState = user ? {loggedIn: true, user} : {logging_pending: false};
 /**
  * The authentication reducer.
  *
- * @param state - The reducer state.
- * @param action - The action to be dispatched.
+ * @param {Object} state - The reducer state.
+ * @param {Object} action - The action to be dispatched.
  * @returns {*}
  */
 export const authentication = (state = initialState, action) => {

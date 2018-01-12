@@ -1,12 +1,12 @@
 import {apiConstants} from "../constants/api.constants";
 import {userConstants} from "../constants/user.constants";
 
-const login = (username, password) => {
+export const login = (username, password) => {
 
     /** Request body - to simplify development process */
     const request = {
-        email: "peter@klaven",
-        password: "cityslicka"
+        email: username,
+        password: password
     };
 
     /** Fetching data */
@@ -17,11 +17,11 @@ const login = (username, password) => {
     })
 };
 
-const logout = () => {
+export const logout = () => {
     localStorage.removeItem(userConstants.LOGIN_JWT);
 };
 
-const getAll = () => {
+export const getAll = () => {
 
 };
 

@@ -1,15 +1,16 @@
 import {userConstants} from "../constants/user.constants";
 import {userServices} from "../services/user.services";
 import {alertConstants} from "../constants/alert.constants";
+import {history} from "../router/history.router";
 
 /**
  * Action to login user.
  *
- * @param username - The user name.
- * @param password - The user password.
+ * @param {String} username - The user name.
+ * @param {String} password - The user password.
  * @returns {function(*)}
  */
-const login = (username, password) => async dispatch => {
+export const login = (username, password) => async dispatch => {
     /** Initialize login request */
     dispatch({type: userConstants.LOGIN_REQUEST});
 
@@ -19,14 +20,13 @@ const login = (username, password) => async dispatch => {
         let token = data.token;
         localStorage.setItem(userConstants.LOGIN_JWT, token);
 
-        console.info("user_jwt has been added to the local storage.")
-
         /** Dispatching action on login success */
-        dispatch({type: userConstants.LOGIN_SUCCESS, token})
+        dispatch({type: userConstants.LOGIN_SUCCESS, token});
+        history.push("/");
     } catch (e) {
 
         /** Dispatching action on login failure */
-        dispatch({type: userConstants.LOGIN_FAILURE, e})
+        dispatch({type: userConstants.LOGIN_FAILURE, e});
         dispatch({type: alertConstants.ERROR(e)});
     }
 
@@ -35,7 +35,7 @@ const login = (username, password) => async dispatch => {
 /**
  * Action to logout user.
  */
-const logout = dispatch => {
+export const logout = dispatch => {
     userServices.logout();
     dispatch({type: userConstants.LOGOUT});
 };
@@ -43,17 +43,6 @@ const logout = dispatch => {
 /**
  * Action to fetch data.
  */
-const getAll = () => {
+export const getAll = () => {
 
 }
-
-/**
- * Contains redux public actions for actions related to the users.
- *
- * @type {{login: function(*=, *=): function(*), logout: function(), getAll: function()}}
- */
-export const userActions = {
-    login,
-    logout,
-    getAll
-};
