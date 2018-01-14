@@ -13,21 +13,24 @@ import {history} from "../router/history.router";
 export const login = (username, password) => async dispatch => {
     /** Initialize login request */
     dispatch({type: userConstants.LOGIN_REQUEST});
+    dispatch({type: alertConstants.CLEAR});
 
     try {
         let response = await userServices.login(username, password);
         let data = await response.json();
         let token = data.token;
+        if(!token) throw "Missing token";
         localStorage.setItem(userConstants.LOGIN_JWT, token);
 
         /** Dispatching action on login success */
-        dispatch({type: userConstants.LOGIN_SUCCESS, token});
+        dispatch({type: userConstants.LOGIN_SUCCESS, user: token});
         history.push("/");
     } catch (e) {
 
         /** Dispatching action on login failure */
-        dispatch({type: userConstants.LOGIN_FAILURE, e});
-        dispatch({type: alertConstants.ERROR(e)});
+        dispatch({type: alertConstants.ERROR, message: e});
+        dispatch({type: userConstants.LOGIN_FAILURE, message: e});
+
     }
 
 };

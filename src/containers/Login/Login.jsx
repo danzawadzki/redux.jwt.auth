@@ -3,8 +3,10 @@ import {connect} from "react-redux";
 import LayoutForm from "../../components/Layout/LayoutForm";
 import LoginForm from "./LoginForm";
 import {login} from "../../actions/user.actions";
+import {clear} from "../../actions/alert.actions";
 import {handleChange} from "../../helpers/handler.helpers";
 import LoaderForm from "../Loader/LoaderForm";
+import Notification from "../../components/Notification/Notification";
 
 /**
  * The login view container.
@@ -15,6 +17,7 @@ class Login extends React.Component {
     /** Handler to onSubmit event */
     handleSubmit = e => {
         e.preventDefault();
+        console.log(this.props);
 
         const {userEmail, userPassword} = this.state;
         const {login} = this.props;
@@ -35,6 +38,9 @@ class Login extends React.Component {
     render() {
         return (
             <LayoutForm>
+                {/* Notification */}
+                {this.props.alert && <Notification {...this.props.alert} handleClose={() => {
+                clear()}}/>}
 
                 {/* Loader */}
                 {this.props.logging_pending && <LoaderForm/>}
@@ -59,10 +65,13 @@ class Login extends React.Component {
 const mapStateToProps = state => {
     const {logging_pending} = state.authentication;
     console.log(state);
-    return {logging_pending}
+    return {
+        alert: state.alert,
+        logging_pending
+    }
 };
 
 /** PropTypes */
 Login.propTypes = {};
 
-export default connect(mapStateToProps, {login})(Login);
+export default connect(mapStateToProps, {login, clear})(Login);

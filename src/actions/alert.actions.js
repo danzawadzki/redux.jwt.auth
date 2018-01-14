@@ -6,7 +6,7 @@ import {alertConstants} from "../constants/alert.constants";
  * @param {String} message - The alert message.
  * @returns {{type: string, message: *}}
  */
-const success = message => {
+export const success = message => {
     return {
         type: alertConstants.SUCCESS, message
     }
@@ -18,7 +18,7 @@ const success = message => {
  * @param {String} message - The alert message.
  * @returns {{type: string, message: *}}
  */
-const error = message => {
+export const error = message => {
     return {
         type: alertConstants.ERROR, message
     }
@@ -29,7 +29,7 @@ const error = message => {
  *
  * @returns {{type: string}}
  */
-const clear = () => {
+export const clear = () => {
     return {
         type: alertConstants.CLEAR
     }
