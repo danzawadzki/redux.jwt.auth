@@ -19,7 +19,7 @@ export const login = (username, password) => async dispatch => {
         let response = await userServices.login(username, password);
         let data = await response.json();
         let token = data.token;
-        if(!token) throw "Missing token";
+        if (!token) throw "Missing token";
         localStorage.setItem(userConstants.LOGIN_JWT, token);
 
         /** Dispatching action on login success */
@@ -49,3 +49,14 @@ export const logout = dispatch => {
 export const getAll = () => {
 
 }
+
+/**
+ * Contains redux public actions for actions related to the users.
+ *
+ * @type {{login: (function(String, String): function(*)), logout: (function(*)), getAll: (function())}}
+ */
+export const userActions = {
+    login,
+    logout,
+    getAll
+};

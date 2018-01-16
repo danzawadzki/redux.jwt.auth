@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
  *
  * @param {String} id - The input id attribute.
  * @param {String} type - The input type attribute (default is text).
- * @param {Function} handleChange - The handler to input onChange ev
+ * @param {Function} handleChange - The handler to input onChange event.
  * @param {String} placeholder - The input placeholder attribute.
  * @constructor
  */

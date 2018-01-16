@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
  * @param {String} type - The button type attribute.
  * @param {String} color - The button color.
  * @param {('sm'|'lg')} size - The button size (bootstrap).
- * @param {Function} handleClick
+ * @param {Function} handleClick - The handler to onClick event.
  * @constructor
  */
 const Button = ({text, type = "button", color = "primary", size, handleClick}) => (

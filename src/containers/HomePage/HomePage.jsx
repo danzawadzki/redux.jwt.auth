@@ -1,5 +1,4 @@
 import * as React from "react"
-import {Col, Grid, Row} from "react-bootstrap";
 
 /**
  * The home page view container.

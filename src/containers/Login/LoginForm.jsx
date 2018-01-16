@@ -21,7 +21,11 @@ const LoginForm = ({handleChange, handleSubmit}) => (
             label="Password"
             placeholder="test"
             handleChange={handleChange}/>
-        <Button text="submit" type="submit" handleClick={handleSubmit}/> Forgot password? Register
+        <Button
+            text="submit"
+            type="submit"
+            handleClick={handleSubmit}/>
+        Forgot password? Register
     </form>
 );
 

@@ -9,7 +9,7 @@ import "./Layout.css";
  * @param children - The child nodes.
  * @constructor
  */
-const LayoutForm = ({width = 4, children}) => (
+const LayoutForm = ({width = 5, children}) => (
     <div className="container container__form">
         <div className="row row__form--h100 justify-content-center align-items-center">
             <div className={`col-lg-${width}`}>

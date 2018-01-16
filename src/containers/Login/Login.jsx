@@ -39,8 +39,7 @@ class Login extends React.Component {
         return (
             <LayoutForm>
                 {/* Notification */}
-                {this.props.alert && <Notification {...this.props.alert} handleClose={() => {
-                clear()}}/>}
+                {this.props.alert.message && <Notification {...this.props.alert} handleClose={this.props.clear}/>}
 
                 {/* Loader */}
                 {this.props.logging_pending && <LoaderForm/>}
@@ -51,7 +50,6 @@ class Login extends React.Component {
                     handleSubmit={this.handleSubmit}/>
 
             </LayoutForm>
-
         )
     }
 }
